@@ -61,7 +61,7 @@ type ApplicationLog struct {
 	//  Enum options - INSIGHTS_DISABLED, NO_INSIGHTS_NOT_SAMPLED_COUNT, NO_INSIGHTS_NOT_SAMPLED_TYPE, NO_INSIGHTS_NOT_SAMPLED_SKIP_URI, NO_INSIGHTS_NOT_SAMPLED_URI_NOT_IN_LIST, NO_INSIGHTS_NOT_SAMPLED_CLIENT_IP_NOT_IN_RANGE, NO_INSIGHTS_NOT_SAMPLED_OTHER, ACTIVE_INSIGHTS_FAILED, ACTIVE_INSIGHTS_ENABLED, PASSIVE_INSIGHTS_ENABLED.
 	ClientInsights *string `json:"client_insights,omitempty"`
 
-	// Number of client_ip.
+	// IPv4 address of the client. When true client IP feature is enabled, this will be derived from the header configured in the true client IP feature, if present in the request.
 	// Required: true
 	ClientIP *int32 `json:"client_ip"`
 
@@ -343,6 +343,12 @@ type ApplicationLog struct {
 
 	//  Field introduced in 17.2.5.
 	SniHostname *string `json:"sni_hostname,omitempty"`
+
+	// Source IP of the client connection to the VS. This can be different from client IP when true client IP feature is enabled. Field introduced in 21.1.3.
+	SourceIP *int32 `json:"source_ip,omitempty"`
+
+	// IPv6 address of the source of the client connection to the VS. This can be different from client IPv6 address when true client IP feature is enabled. Field introduced in 21.1.3.
+	SourceIp6 *string `json:"source_ip6,omitempty"`
 
 	// spdy_version of ApplicationLog.
 	SpdyVersion *string `json:"spdy_version,omitempty"`
