@@ -69,6 +69,7 @@ type AviClient struct {
 	L4PolicySet                     *L4PolicySetClient
 	LabelGroup                      *LabelGroupClient
 	LicenseLedgerDetails            *LicenseLedgerDetailsClient
+	LicenseStatus                   *LicenseStatusClient
 	LogControllerMapping            *LogControllerMappingClient
 	MemoryBalancerRequest           *MemoryBalancerRequestClient
 	MicroService                    *MicroServiceClient
@@ -209,6 +210,7 @@ func NewAviClient(host string, username string, options ...func(*session.AviSess
 	aviClient.L4PolicySet = NewL4PolicySetClient(aviSession)
 	aviClient.LabelGroup = NewLabelGroupClient(aviSession)
 	aviClient.LicenseLedgerDetails = NewLicenseLedgerDetailsClient(aviSession)
+	aviClient.LicenseStatus = NewLicenseStatusClient(aviSession)
 	aviClient.LogControllerMapping = NewLogControllerMappingClient(aviSession)
 	aviClient.MemoryBalancerRequest = NewMemoryBalancerRequestClient(aviSession)
 	aviClient.MicroService = NewMicroServiceClient(aviSession)
