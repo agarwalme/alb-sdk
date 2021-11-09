@@ -300,6 +300,9 @@ type ServiceEngineGroup struct {
 	// Iptable Rules. Maximum of 128 items allowed.
 	Iptables []*IptableRuleSet `json:"iptables,omitempty"`
 
+	// Port ranges for any servers running in inband LinuxServer clouds. Field introduced in 21.1.3.
+	KniAllowedServerPorts []*KniPortRange `json:"kni_allowed_server_ports,omitempty"`
+
 	// Number of L7 connections that can be cached per core. Field introduced in 21.1.1.
 	L7ConnsPerCore *int32 `json:"l7_conns_per_core,omitempty"`
 
