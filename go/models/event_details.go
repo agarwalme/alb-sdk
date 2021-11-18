@@ -41,6 +41,9 @@ type EventDetails struct {
 	// Placeholder for description of property app_signature_event_data of obj type EventDetails field type str  type object
 	AppSignatureEventData *AppSignatureEventData `json:"app_signature_event_data,omitempty"`
 
+	// Details for Attach IP status. Field introduced in 21.1.3.
+	AttachIPStatusDetails *AttachIPStatusEventDetails `json:"attach_ip_status_details,omitempty"`
+
 	// Placeholder for description of property avg_uptime_change_details of obj type EventDetails field type str  type object
 	AvgUptimeChangeDetails *AvgUptimeChangeDetails `json:"avg_uptime_change_details,omitempty"`
 
@@ -220,6 +223,9 @@ type EventDetails struct {
 
 	// Placeholder for description of property delete_se_details of obj type EventDetails field type str  type object
 	DeleteSeDetails *RmDeleteSeEventDetails `json:"delete_se_details,omitempty"`
+
+	// Details for Detach IP status. Field introduced in 21.1.3.
+	DetachIPStatusDetails *DetachIPStatusEventDetails `json:"detach_ip_status_details,omitempty"`
 
 	// Placeholder for description of property disable_se_migrate_details of obj type EventDetails field type str  type object
 	DisableSeMigrateDetails *DisableSeMigrateEventDetails `json:"disable_se_migrate_details,omitempty"`
@@ -625,4 +631,7 @@ type EventDetails struct {
 
 	// Placeholder for description of property vs_scaleout_details of obj type EventDetails field type str  type object
 	VsScaleoutDetails *VsScaleOutEventDetails `json:"vs_scaleout_details,omitempty"`
+
+	// Details for Primary Switchover status. Field introduced in 21.1.3.
+	VsSwitchoverDetails *VsSwitchoverEventDetails `json:"vs_switchover_details,omitempty"`
 }

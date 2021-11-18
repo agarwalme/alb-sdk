@@ -26,7 +26,7 @@ type ALBServicesConfig struct {
 	// Protobuf versioning for config pbs. Field introduced in 21.1.1.
 	ConfigpbAttributes *ConfigPbAttributes `json:"configpb_attributes,omitempty"`
 
-	// Information about the portal features opted in for controller. Field introduced in 20.1.1.
+	// Information about the portal features opted in for controller. Field introduced in 20.1.1. Allowed in Enterprise edition, Enterprise edition.
 	// Required: true
 	FeatureOptInStatus *PortalFeatureOptIn `json:"feature_opt_in_status"`
 
