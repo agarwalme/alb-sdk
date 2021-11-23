@@ -2,14 +2,14 @@ from avi.migrationtools.nsxt_converter import conversion_util
 
 
 def update_alb_type(lb_vs, alb_vs):
-    alb_vs['url'], alb_vs['uuid'] = conversion_util.get_obj_url_uuid(lb_vs['path'], lb_vs['unique_id'])
-    alb_vs['enabled'] = lb_vs['enabled']
+    alb_vs['url'], alb_vs['uuid'] = conversion_util.get_obj_url_uuid(lb_vs.get('path'), lb_vs.get('unique_id'))
+    alb_vs['enabled'] = lb_vs.get('enabled')
 
     alb_vs['services']=dict(
-        port=lb_vs['ports'][0]
+        port=lb_vs.get('ports')[0]
         )
-    alb_vs['pool_ref']=lb_vs['pool_path']
-    alb_vs['application_profile_ref']=lb_vs['application_profile_path']
+    alb_vs['pool_ref']=lb_vs.get('pool_path')
+    alb_vs['application_profile_ref']=lb_vs.get('application_profile_path')
     alb_vs['ssl_profile_ref']=lb_vs.get('client_ssl_profile_binding')
     tenant = conversion_util.get_tenant_ref(alb_vs['url'])
     alb_vs['tenant_ref'] = conversion_util.get_object_ref('admin', 'tenant')
