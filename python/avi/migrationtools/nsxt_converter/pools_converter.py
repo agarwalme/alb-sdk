@@ -9,7 +9,7 @@ def update_alb_type(lb_pl, alb_pl):
         alb_pl['lb_algorithm'] = 'LB_ALGORITHM_LEAST_CONNECTION'
     elif lb_pl['algorithm']== 'IP_HASH':
         alb_pl['lb_algorithm'] = 'LB_ALGORITHM_CONSISTENT_HASH_SOURCE_IP_ADDRESS'
-    alb_pl['min_servers_up']=lb_pl['min_active_members']
+    alb_pl['min_servers_up']=lb_pl.get('min_active_members')
     alb_pl['max_concurrent_connections']=lb_pl.get('max_concurrent_connections_per_server')
     alb_pl['health_monitor_refs']=lb_pl.get('active_monitor_paths')
     alb_pl['servers'] = dict(
@@ -27,7 +27,7 @@ def update_alb_type(lb_pl, alb_pl):
 
 
     alb_pl['ConnPoolProperties']=dict(
-        upstream_connpool_server_max_cache=lb_pl['tcp_multiplexing_number']
+        upstream_connpool_server_max_cache=lb_pl.get('tcp_multiplexing_number')
 
     )
     if(lb_pl.get('member_group')):
@@ -37,8 +37,8 @@ def update_alb_type(lb_pl, alb_pl):
 
         if(lb_pl['member_group']['port']):
             alb_pl['default_server_port']=lb_pl['member_group']['port']
-    alb_pl['url'], alb_pl['uuid'] = conversion_util.get_obj_url_uuid(lb_pl['path'], lb_pl['unique_id'])
-    tenant = conversion_util.get_tenant_ref(alb_pl['url'])
+    alb_pl['url'], alb_pl['uuid'] = conversion_util.get_obj_url_uuid(lb_pl.get('path'), lb_pl.get('unique_id'))
+    tenant = conversion_util.get_tenant_ref(alb_pl.get('url'))
     alb_pl['tenant_ref'] = conversion_util.get_object_ref('admin', 'tenant')
 
 
